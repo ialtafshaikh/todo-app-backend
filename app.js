@@ -4,10 +4,8 @@ const mongoose = require("mongoose");
 //models
 const Todos = require("./models/todos");
 
-var config = require("./config");
-
-const PORT = config.PORT;
-const dbURI = config.mongoUrl;
+const PORT = process.env.PORT;
+const dbURI = process.env.DATABASE_URL;
 
 const connect = mongoose.connect(dbURI, {
   useNewUrlParser: true,
