@@ -6,7 +6,7 @@ const Todos = require("./models/todos");
 
 var config = require("./config");
 
-const PORT = 3000;
+const PORT = config.PORT;
 const dbURI = config.mongoUrl;
 
 const connect = mongoose.connect(dbURI, {
@@ -50,7 +50,6 @@ app.post("/todos", (req, res) => {
   Todos.create(req.body)
     .then(
       (todo) => {
-        console.log("Todo Created ", todo);
         res.status(200);
         res.setHeader("Content-Type", "application/json");
         res.json({ status: "Todo added successfully", data: todo });
