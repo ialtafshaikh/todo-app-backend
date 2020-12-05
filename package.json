@@ -1,0 +1,23 @@
+{
+  "name": "todo-backend",
+  "version": "1.0.0",
+  "description": "express backend for todo app build on nodejs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app"
+  },
+  "keywords": [
+    "express",
+    "mongoose",
+    "mongodb",
+    "REST",
+    "API"
+  ],
+  "author": "Altaf Shaikh",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.11.4"
+  }
+}
