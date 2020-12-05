@@ -34,7 +34,16 @@ app.get("/", (req, res) => {
 });
 
 app.get("/todos", (req, res) => {
-  res.send("routes to get all the todos list");
+  Todos.find({})
+    .then(
+      (todos) => {
+        res.status(200);
+        res.setHeader("Content-Type", "application/json");
+        res.json(todos);
+      },
+      (err) => next(err)
+    )
+    .catch((err) => next(err));
 });
 
 app.post("/todos", (req, res) => {
