@@ -74,7 +74,22 @@ app.get("/todos/:id", (req, res) => {
 });
 
 app.put("/todos/:id", (req, res) => {
-  res.send("routes to update the todo");
+  Todos.findByIdAndUpdate(
+    req.params.id,
+    {
+      $set: req.body,
+    },
+    { new: true } //get updated result
+  )
+    .then(
+      (todo) => {
+        res.status(200);
+        res.setHeader("Content-Type", "application/json");
+        res.json(todo);
+      },
+      (err) => next(err)
+    )
+    .catch((err) => next(err));
 });
 
 app.delete("/todos/:id", (req, res) => {
