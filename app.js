@@ -39,6 +39,7 @@ app.get("/todos", (req, res) => {
       res.json(todos);
     })
     .catch((err) => {
+      res.status(500);
       res.json({ error: err });
     });
 });
@@ -51,6 +52,7 @@ app.post("/todos", (req, res) => {
       res.json({ status: "Todo added successfully", data: todo });
     })
     .catch((err) => {
+      res.status(404);
       res.json({ message: "Invalid Object Property", error: err });
     });
 });
@@ -63,6 +65,7 @@ app.get("/todos/:id", (req, res) => {
       res.json(todo);
     })
     .catch((err) => {
+      res.status(404);
       res.json({ message: "Id did not exists", error: err });
     });
 });
@@ -81,6 +84,7 @@ app.put("/todos/:id", (req, res) => {
       res.json(todo);
     })
     .catch((err) => {
+      res.status(404);
       res.json({ message: "Id did not exists", error: err });
     });
 });
@@ -93,6 +97,7 @@ app.delete("/todos/:id", (req, res) => {
       res.json({ status: "Todo deleted successfully", response: response });
     })
     .catch((err) => {
+      res.status(404);
       res.json({ message: "Id did not exists", error: err });
     });
 });
