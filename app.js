@@ -61,7 +61,16 @@ app.post("/todos", (req, res) => {
 });
 
 app.get("/todos/:id", (req, res) => {
-  res.send("routes to get single todo");
+  Todos.findById(req.params.id)
+    .then(
+      (todo) => {
+        res.status(200);
+        res.setHeader("Content-Type", "application/json");
+        res.json(todo);
+      },
+      (err) => next(err)
+    )
+    .catch((err) => next(err));
 });
 
 app.put("/todos/:id", (req, res) => {
