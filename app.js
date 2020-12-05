@@ -35,41 +35,38 @@ app.get("/", (req, res) => {
 
 app.get("/todos", (req, res) => {
   Todos.find({})
-    .then(
-      (todos) => {
-        res.status(200);
-        res.setHeader("Content-Type", "application/json");
-        res.json(todos);
-      },
-      (err) => next(err)
-    )
-    .catch((err) => next(err));
+    .then((todos) => {
+      res.status(200);
+      res.setHeader("Content-Type", "application/json");
+      res.json(todos);
+    })
+    .catch((err) => {
+      res.json({ error: err });
+    });
 });
 
 app.post("/todos", (req, res) => {
   Todos.create(req.body)
-    .then(
-      (todo) => {
-        res.status(200);
-        res.setHeader("Content-Type", "application/json");
-        res.json({ status: "Todo added successfully", data: todo });
-      },
-      (err) => next(err)
-    )
-    .catch((err) => next(err));
+    .then((todo) => {
+      res.status(200);
+      res.setHeader("Content-Type", "application/json");
+      res.json({ status: "Todo added successfully", data: todo });
+    })
+    .catch((err) => {
+      res.json({ message: "Invalid Object Property", error: err });
+    });
 });
 
 app.get("/todos/:id", (req, res) => {
   Todos.findById(req.params.id)
-    .then(
-      (todo) => {
-        res.status(200);
-        res.setHeader("Content-Type", "application/json");
-        res.json(todo);
-      },
-      (err) => next(err)
-    )
-    .catch((err) => next(err));
+    .then((todo) => {
+      res.status(200);
+      res.setHeader("Content-Type", "application/json");
+      res.json(todo);
+    })
+    .catch((err) => {
+      res.json({ message: "Id did not exists", error: err });
+    });
 });
 
 app.put("/todos/:id", (req, res) => {
@@ -80,28 +77,26 @@ app.put("/todos/:id", (req, res) => {
     },
     { new: true } //get updated result
   )
-    .then(
-      (todo) => {
-        res.status(200);
-        res.setHeader("Content-Type", "application/json");
-        res.json(todo);
-      },
-      (err) => next(err)
-    )
-    .catch((err) => next(err));
+    .then((todo) => {
+      res.status(200);
+      res.setHeader("Content-Type", "application/json");
+      res.json(todo);
+    })
+    .catch((err) => {
+      res.json({ message: "Id did not exists", error: err });
+    });
 });
 
 app.delete("/todos/:id", (req, res) => {
   Todos.findByIdAndRemove(req.params.id)
-    .then(
-      (response) => {
-        res.status(200);
-        res.setHeader("Content-Type", "application/json");
-        res.json({ status: "Todo deleted successfully", response: response });
-      },
-      (err) => next(err)
-    )
-    .catch((err) => next(err));
+    .then((response) => {
+      res.status(200);
+      res.setHeader("Content-Type", "application/json");
+      res.json({ status: "Todo deleted successfully", response: response });
+    })
+    .catch((err) => {
+      res.json({ message: "Id did not exists", error: err });
+    });
 });
 
 app.listen(PORT, () => {
