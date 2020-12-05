@@ -47,7 +47,17 @@ app.get("/todos", (req, res) => {
 });
 
 app.post("/todos", (req, res) => {
-  res.send("routes to create new todo");
+  Todos.create(req.body)
+    .then(
+      (todo) => {
+        console.log("Todo Created ", todo);
+        res.status(200);
+        res.setHeader("Content-Type", "application/json");
+        res.json({ status: "todo added successfully", data: todo });
+      },
+      (err) => next(err)
+    )
+    .catch((err) => next(err));
 });
 
 app.get("/todos/:id", (req, res) => {
