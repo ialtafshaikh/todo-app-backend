@@ -1,7 +1,27 @@
 const express = require("express");
 const mongoose = require("mongoose");
 
+//models
+const Todos = require("./models/todos");
+
+var config = require("./config");
+
 const PORT = 3000;
+const dbURI = config.mongoUrl;
+
+const connect = mongoose.connect(dbURI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+connect.then(
+  (db) => {
+    console.log("Connected Successfully to Mongodb Server");
+  },
+  (err) => {
+    console.log(err);
+  }
+);
 
 const app = express();
 
