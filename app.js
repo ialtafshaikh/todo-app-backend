@@ -53,7 +53,7 @@ app.post("/todos", (req, res) => {
         console.log("Todo Created ", todo);
         res.status(200);
         res.setHeader("Content-Type", "application/json");
-        res.json({ status: "todo added successfully", data: todo });
+        res.json({ status: "Todo added successfully", data: todo });
       },
       (err) => next(err)
     )
@@ -93,7 +93,16 @@ app.put("/todos/:id", (req, res) => {
 });
 
 app.delete("/todos/:id", (req, res) => {
-  res.send("routes to delete the todo");
+  Todos.findByIdAndRemove(req.params.id)
+    .then(
+      (response) => {
+        res.status(200);
+        res.setHeader("Content-Type", "application/json");
+        res.json({ status: "Todo deleted successfully", response: response });
+      },
+      (err) => next(err)
+    )
+    .catch((err) => next(err));
 });
 
 app.listen(PORT, () => {
