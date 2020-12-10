@@ -10,7 +10,11 @@ const todoRouter = require("./routes/todoRoutes");
 const Todos = require("./models/todos");
 
 //middleware
-const { signUpUser, loginUser } = require("./middlewares/authenticate");
+const {
+  signUpUser,
+  loginUser,
+  authorize,
+} = require("./middlewares/authenticate");
 
 dotenv.config({ path: ".env" });
 const PORT = process.env.PORT;
@@ -43,7 +47,7 @@ app.get("/", (req, res) => {
 
 app.post("/signup", signUpUser);
 app.post("/login", loginUser);
-app.use("/todos", todoRouter);
+app.use("/todos", authorize, todoRouter);
 
 app.listen(PORT, () => {
   console.log(`Server is running at http://localhost:${PORT}`);
