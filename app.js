@@ -9,6 +9,9 @@ const todoRouter = require("./routes/todoRoutes");
 //models
 const Todos = require("./models/todos");
 
+//middleware
+const { signUpUser } = require("./middlewares/authenticate");
+
 dotenv.config({ path: ".env" });
 const PORT = process.env.PORT;
 const dbURI = process.env.DATABASE_URL;
@@ -38,6 +41,7 @@ app.get("/", (req, res) => {
     .json({ message: "Hi I am Server", data: "no data on this endpoint" });
 });
 
+app.post("/signup", signUpUser);
 app.use("/todos", todoRouter);
 
 app.listen(PORT, () => {
