@@ -42,6 +42,7 @@ const authorize = async (req, res, next) => {
     response = await axios.post(BASE_URL + endpointAuth, {
       authorization: req.headers.authorization,
     });
+    res.currentUser = response.data;
     next();
   } catch (error) {
     return sendErrorMessage(

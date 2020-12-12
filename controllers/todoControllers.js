@@ -6,7 +6,7 @@ const getAllTodos = (req, res, next) => {
     .then((todos) => {
       res.status(200);
       res.setHeader("Content-Type", "application/json");
-      res.json(todos);
+      res.json({ todos: todos, currentUser: res.currentUser });
     })
     .catch((err) => {
       res.status(500);
