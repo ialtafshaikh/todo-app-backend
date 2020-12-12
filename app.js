@@ -19,7 +19,13 @@ const {
 
 dotenv.config({ path: ".env" });
 const PORT = process.env.PORT;
-const dbURI = process.env.DATABASE_URL;
+let dbURI;
+
+if (process.env.DEBUG) {
+  dbURI = process.env.LOCAL_DB_URL;
+} else {
+  dbURI = process.env.DATABASE_URL;
+}
 
 const connect = mongoose.connect(dbURI, {
   useNewUrlParser: true,
