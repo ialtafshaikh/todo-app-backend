@@ -38,33 +38,18 @@ const loginUser = async (req, res, next) => {
 
 const authorize = async (req, res, next) => {
   let response;
-  let authHeader;
-  console.log("cookie received", req);
-
-  // if (!req.headers.authorization) {
-  //   console.log("cookie received", request.headers.cookie);
-  //   authHeader = req.headers.cookie;
-  // }
-  // authHeader = req.headers.authorization;
-  // try {
-  //   response = await axios.post(BASE_URL + endpointAuth, {
-  //     authorization: authHeader,
-  //   });
-  //   if (!response.data.authorize) {
-  //     return sendErrorMessage(
-  //       new AppError(500, "Not Authorize", error),
-  //       req,
-  //       res
-  //     );
-  //   }
-  //   next();
-  // } catch (error) {
-  //   return sendErrorMessage(
-  //     new AppError(500, "Unable to Authorize", error),
-  //     req,
-  //     res
-  //   );
-  // }
+  try {
+    response = await axios.post(BASE_URL + endpointAuth, {
+      authorization: req.headers.authorization,
+    });
+    next();
+  } catch (error) {
+    return sendErrorMessage(
+      new AppError(401, "Not Authorize", error),
+      req,
+      res
+    );
+  }
 };
 
 module.exports = {
