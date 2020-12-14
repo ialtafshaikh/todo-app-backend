@@ -21,11 +21,11 @@ dotenv.config({ path: ".env" });
 const PORT = process.env.PORT;
 let dbURI;
 
-if (process.env.DEBUG) {
-  dbURI = process.env.LOCAL_DB_URL;
-} else {
-  dbURI = process.env.DATABASE_URL;
-}
+// if (!process.env.DEBUG) {
+dbURI = process.env.DATABASE_URL;
+// } else {
+// dbURI = process.env.LOCAL_DB_URL;
+// }
 
 const connect = mongoose.connect(dbURI, {
   useNewUrlParser: true,
