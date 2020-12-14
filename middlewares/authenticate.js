@@ -3,7 +3,8 @@ const axios = require("axios");
 const AppError = require("../helpers/appErrorClass");
 const sendErrorMessage = require("../helpers/sendError");
 
-const BASE_URL = "http://localhost:3001";
+// const BASE_URL = "http://localhost:3001";
+const BASE_URL = "https://node-authentication-backend.herokuapp.com/";
 const endpointSignUp = "/users/signup";
 const endpointLogin = "/users/login";
 const endpointAuth = "/auth";
