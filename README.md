@@ -5,6 +5,10 @@ A Todo backend built using express server, mongoDB atlas is used to store the da
 
 ## Getting Started
 
+[Frontend App of the todo linked with the backend](https://ialtafshaikh.github.io/todo-app-frontend/)
+
+[check the authentication code for the todo](https://github.com/ialtafshaikh/authentication-backend)
+
 ### Downloading and Running this Project Locally
 1. clone the repository
 ```
