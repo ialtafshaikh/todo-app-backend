@@ -3,16 +3,35 @@ const Todos = require("../models/todos");
 
 // res => will contain currentUser object currently logged in
 const getAllTodos = (req, res, next) => {
-  Todos.find({ author: res.currentUser._id })
-    .then((todos) => {
-      res.status(200);
-      res.setHeader("Content-Type", "application/json");
-      res.json({ todos: todos, currentUser: res.currentUser });
-    })
-    .catch((err) => {
-      res.status(500);
-      res.json({ error: err });
+  if (req.query) {
+    Object.keys(req.query).forEach((prop) => {
+      req.query[prop] = 1;
     });
+    req.query.taskID = 1;
+    req.query._id = 0;
+    Todos.find({ author: res.currentUser._id })
+      .select(req.query)
+      .then((todos) => {
+        res.status(200);
+        res.setHeader("Content-Type", "application/json");
+        res.json({ todos: todos, currentUser: res.currentUser });
+      })
+      .catch((err) => {
+        res.status(500);
+        res.json({ error: err });
+      });
+  } else {
+    Todos.find({ author: res.currentUser._id })
+      .then((todos) => {
+        res.status(200);
+        res.setHeader("Content-Type", "application/json");
+        res.json({ todos: todos, currentUser: res.currentUser });
+      })
+      .catch((err) => {
+        res.status(500);
+        res.json({ error: err });
+      });
+  }
 };
 
 const createTodo = (req, res, next) => {
@@ -51,6 +70,7 @@ const updateTodo = (req, res, next) => {
   Todos.findById(req.params.id)
     .then((todo) => {
       if (todo.author == res.currentUser._id) {
+        req.body.completedAt = new Date();
         Todos.findByIdAndUpdate(
           { _id: req.params.id },
           {
@@ -105,10 +125,21 @@ const deleteTodo = (req, res, next) => {
     });
 };
 
+const taskCompletionTime = (req, res, next) => {
+  Todos.findById(req.params.id).then(({ startedAt, completedAt }) => {
+    const completionTime = completedAt - startedAt;
+    const minutes = ((completionTime % 86400000) % 3600000) / 60000;
+    res.status(200);
+    res.setHeader("Content-Type", "application/json");
+    res.json({ taskCompletionTime: minutes + "mins" });
+  });
+};
+
 module.exports = {
   getAllTodos,
   createTodo,
   getTodoById,
   updateTodo,
   deleteTodo,
+  taskCompletionTime,
 };
