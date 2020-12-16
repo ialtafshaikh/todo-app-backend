@@ -3,12 +3,9 @@ const Todos = require("../models/todos");
 
 // res => will contain currentUser object currently logged in
 const getAllTodos = (req, res, next) => {
-  if (req.query == null) {
-    Object.keys(req.query).forEach((prop) => {
-      req.query[prop] = 1;
-    });
-    req.query.taskID = 1;
+  if (Object.keys(req.query).length != 0) {
     req.query._id = 0;
+    req.query.taskID = 1;
     Todos.find({ author: res.currentUser._id })
       .select(req.query)
       .then((todos) => {
