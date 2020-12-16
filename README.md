@@ -35,6 +35,8 @@ PORT=3000
 /auth : to restrict the user from accessing the resources on route /todos
 ```
 Note:
+
+0. **Make sure you have internet connection to connect with the auth backend**
 1. while signup send object in this format
 ```
 {
@@ -63,6 +65,14 @@ Note:
 
 ## Live Demo of this Project
 [hosted backend](https://todo-rest-api-backend.herokuapp.com/)
+
+## Proposed Microservice Architecture
+
+### Using Heroku 
+![heroku microservice archetecture](https://github.com/ialtafshaikh/static-files/raw/master/microservice/todo-microservice-node.png)
+
+### Using Docker
+![docker microservice archetecture](https://github.com/ialtafshaikh/static-files/raw/master/microservice/todo-microservice-node-docker.png)
 
 ## Author
 
