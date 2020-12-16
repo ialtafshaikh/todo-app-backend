@@ -3,7 +3,7 @@ const Todos = require("../models/todos");
 
 // res => will contain currentUser object currently logged in
 const getAllTodos = (req, res, next) => {
-  if (req.query) {
+  if (req.query == null) {
     Object.keys(req.query).forEach((prop) => {
       req.query[prop] = 1;
     });
