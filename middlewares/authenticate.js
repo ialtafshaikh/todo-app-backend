@@ -16,7 +16,7 @@ const signUpUser = async (req, res, next) => {
     res.status(200).json(response.data);
   } catch (error) {
     return sendErrorMessage(
-      new AppError(500, "Unable to post", error),
+      new AppError(400, "invalid object received", error),
       req,
       res
     );
