@@ -16,7 +16,7 @@ const signUpUser = async (req, res, next) => {
     res.status(200).json(response.data);
   } catch (error) {
     return sendErrorMessage(
-      new AppError(400, "invalid object received", error),
+      new AppError(400, error.response.data, ""),
       req,
       res
     );
@@ -30,7 +30,7 @@ const loginUser = async (req, res, next) => {
     res.status(200).json(response.data);
   } catch (error) {
     return sendErrorMessage(
-      new AppError(500, "Unable to Login", error),
+      new AppError(400, error.response.data, ""),
       req,
       res
     );
@@ -47,7 +47,7 @@ const authorize = async (req, res, next) => {
     next();
   } catch (error) {
     return sendErrorMessage(
-      new AppError(401, "Not Authorize", error),
+      new AppError(400, error.response.data, ""),
       req,
       res
     );
