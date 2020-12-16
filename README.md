@@ -74,6 +74,10 @@ Note:
 ### Using Docker
 ![docker microservice archetecture](https://github.com/ialtafshaikh/static-files/raw/master/microservice/todo-microservice-node-docker.png)
 
+## Steps to Host on Heroku
+
+[refer this gist](https://gist.github.com/ialtafshaikh/8336df5d417109b12c46bd20ccda4e17)
+
 ## Author
 
 * **Altaf Shaikh** - *work by* - [ialtafshaikh](https://github.com/ialtafshaikh)
