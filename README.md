@@ -5,8 +5,6 @@ A Todo backend built using express server, mongoDB atlas is used to store the da
 
 ## Getting Started
 
-[Frontend App of the todo linked with the backend](https://ialtafshaikh.github.io/todo-app-frontend/)
-
 [check the authentication code for the todo](https://github.com/ialtafshaikh/authentication-backend)
 
 ### Downloading and Running this Project Locally
@@ -17,6 +15,7 @@ https://github.com/ialtafshaikh/todo-app-backend.git
 2. add a ``.env`` file inside the root folder
 ```
 DATABASE_URL=your_atlas_db_url
+LOCAL_DB_URL=your local mongo url
 DEBUG=true // set true to use local db and false to use atlas
 PORT=3000
 ```
