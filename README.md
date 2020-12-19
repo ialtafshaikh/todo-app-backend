@@ -7,6 +7,22 @@ A Todo backend built using express server, mongoDB atlas is used to store the da
 - [Check the frontend app of the todo](https://github.com/ialtafshaikh/todo-app-frontend)
 - [Check the authentication backend code](https://github.com/ialtafshaikh/authentication-backend)
 
+## Features
+
+- get all todos related to authenticated user
+- create todo and store in the mongoDb
+- update todo status using todo ID
+- delete todo using todo ID
+
+## Additional Features
+
+- authentication is done by the auth server and communication is done using axios api calls
+- hosted on Heroku platform
+- created docker image 
+- microservice architecture propsed
+- used mongoDb cloud to store todo data
+
+
 ### Downloading and Running this Project Locally
 1. clone the repository
 ```
