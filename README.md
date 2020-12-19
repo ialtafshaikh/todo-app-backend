@@ -96,9 +96,22 @@ Note:
 ### Using Docker
 ![docker microservice archetecture](https://github.com/ialtafshaikh/static-files/raw/master/microservice/todo-microservice-node-docker.png)
 
-## Steps to Host on Heroku
+## Deployment
 
-[refer this gist](https://gist.github.com/ialtafshaikh/8336df5d417109b12c46bd20ccda4e17)
+To Host the Project I had used Heroku Platform. To learn more [refer this gist](https://gist.github.com/ialtafshaikh/8336df5d417109b12c46bd20ccda4e17)
+
+## References
+
+- [mongoose quick start](https://mongoosejs.com/docs/index.html)
+- [mongoDB documentation reference](https://docs.mongodb.com/manual/introduction/)
+- [uniquid to generate unique ids](https://www.npmjs.com/package/uniqid)
+- [npm express](https://www.npmjs.com/package/express)
+- [axios to make api calls](https://www.npmjs.com/package/axios)
+- [CORS module to talk between cross-origin resources](https://www.npmjs.com/package/cors)
+- [getting started with docker](https://docs.docker.com/get-started/)
+- [middlewares in nodejs](https://medium.com/@selvaganesh93/how-node-js-middleware-works-d8e02a936113)
+- [building microservices using nodeJS](https://www.youtube.com/playlist?list=PLIGDNOJWiL182j1bD_nQm-SxARR5s977O)
+- [Understanding Microservices Patterns](https://www.youtube.com/playlist?list=PLIGDNOJWiL1_-i0DjC69qr4gRUOkpTvRQ)
 
 ## Author
 
