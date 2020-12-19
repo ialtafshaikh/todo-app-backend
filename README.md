@@ -4,8 +4,8 @@
 A Todo backend built using express server, mongoDB atlas is used to store the data and hosted on Heroku.
 
 ## Getting Started
-
-[check the authentication code for the todo](https://github.com/ialtafshaikh/authentication-backend)
+- [Check the frontend app of the todo](https://github.com/ialtafshaikh/todo-app-frontend)
+- [Check the authentication backend code](https://github.com/ialtafshaikh/authentication-backend)
 
 ### Downloading and Running this Project Locally
 1. clone the repository
