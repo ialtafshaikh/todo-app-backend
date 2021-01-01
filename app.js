@@ -14,6 +14,7 @@ const Todos = require("./models/todos");
 const {
   signUpUser,
   loginUser,
+  loginUsername,
   authorize,
 } = require("./middlewares/authenticate");
 
@@ -53,6 +54,7 @@ app.get("/", (req, res) => {
     .json({ message: "Hi I am Server", data: "no data on this endpoint" });
 });
 
+app.post("/login/username", loginUsername);
 app.post("/signup", signUpUser);
 app.post("/login", loginUser);
 app.use("/todos", authorize, todoRouter);

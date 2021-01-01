@@ -7,6 +7,7 @@ const sendErrorMessage = require("../helpers/sendError");
 const BASE_URL = "https://node-authentication-backend.herokuapp.com";
 const endpointSignUp = "/users/signup";
 const endpointLogin = "/users/login";
+const endpointLoginusername = "/users/login/username";
 const endpointAuth = "/auth";
 
 const signUpUser = async (req, res, next) => {
@@ -27,6 +28,21 @@ const loginUser = async (req, res, next) => {
   let response;
   try {
     response = await axios.post(BASE_URL + endpointLogin, req.body);
+    res.status(200).json(response.data);
+  } catch (error) {
+    console.log(error.response.data);
+    return sendErrorMessage(
+      new AppError(400, error.response.data, ""),
+      req,
+      res
+    );
+  }
+};
+
+const loginUsername = async (req, res, next) => {
+  let response;
+  try {
+    response = await axios.post(BASE_URL + endpointLoginusername, req.body);
     res.status(200).json(response.data);
   } catch (error) {
     return sendErrorMessage(
@@ -57,5 +73,6 @@ const authorize = async (req, res, next) => {
 module.exports = {
   signUpUser,
   loginUser,
+  loginUsername,
   authorize,
 };
